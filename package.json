@@ -12,7 +12,8 @@
     "build:web:ssr": "next build",
     "start:next": "next start -p 3000",
     "build:electron": "tsc -p electron",
-    "dist": "npm run build:web:ssr && npm run build:electron && electron-builder"
+    "dist": "npm run build:web:ssr && npm run build:electron && electron-builder",
+    "dist:win": "npm run build:web:ssr && npm run build:electron && electron-builder --win nsis"
   },
   "main": "dist-electron/main.js",
   "build": {
