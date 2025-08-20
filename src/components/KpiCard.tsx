@@ -10,7 +10,7 @@ export default function KpiCard({ nombre, actual, objetivo, unidad }: KpiCardPro
 
   return (
     <div
-      className={`p-4 rounded-2xl min-w-[200px] max-w-[240px] shadow-lg border 
+      className={`p-4 rounded-2xl min-w-[260px] min-h-[120px] max-w-[330px] shadow-lg border 
                   backdrop-blur-lg text-white transition-transform hover:scale-[1.03]`}
       style={{
         background: ok
@@ -19,8 +19,8 @@ export default function KpiCard({ nombre, actual, objetivo, unidad }: KpiCardPro
         borderColor: "rgba(255,255,255,0.3)",
       }}
     >
-      <div className="text-lg font-semibold drop-shadow-sm">{nombre}</div>
-      <div className="text-3xl font-extrabold drop-shadow-md">
+      <div className=" text-base font-semibold drop-shadow-sm">{nombre}</div>
+      <div className="text-2xl font-extrabold drop-shadow-md">
         {actual}{unidad ? ` ${unidad}` : ''}
       </div>
       {objetivo != null && (

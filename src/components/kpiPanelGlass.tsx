@@ -30,9 +30,10 @@ export default function KpiPanelGlass({ kpis }: KpiPanelGlassProps) {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -20, scale: 0.95 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="fixed top-8 left-0 right-0 flex flex-wrap justify-center gap-4
-             backdrop-blur-xl bg-white/20 border border-white/30
-             rounded-2xl shadow-2xl p-4 z-50"
+          className="fixed top-0 right-0 bottom-0 w-96
+            flex flex-col gap-4
+            backdrop-blur-xl bg-white/20 border-l border-white/30
+            shadow-2xl p-4 z-50"
         >
           {kpis.map((kpi, idx) => (
             <KpiCard

@@ -35,14 +35,15 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setShowKpis(prev => !prev); // <--- usa el valor actual
+  //Effect para mostrar cada X segundos y ocultar
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setShowKpis(prev => !prev); // <--- usa el valor actual
       
-    }, 10000);
+  //   }, 10000);
 
-    return () => clearInterval(intervalId); // limpieza al desmontar
-  }, []);
+  //   return () => clearInterval(intervalId); // limpieza al desmontar
+  // }, []);
 
   if (error) {
     return (

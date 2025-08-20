@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, screen } from "electron";
 import * as path from "path";
 import next from "next";
 import { createServer } from "http";
@@ -30,11 +30,14 @@ async function createWindow() {
 
     process.env.CREDENTIALS_PATH = path.join(app.getAppPath(), "credentials.json");
 
+    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
     // Crear ventana de Electron transparente
     win = new BrowserWindow({
-        width: 1280,
+        width: 450,
         height: 800,
+        x: width - 450, // posición horizontal (pegado a la derecha)
+        y: 0,
         show: false,
         frame: false,
         titleBarStyle: "hiddenInset",
