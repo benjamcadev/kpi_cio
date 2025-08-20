@@ -1,4 +1,5 @@
 
+import {useEffect, useRef} from 'react'
 import { motion } from "framer-motion"
 
 
@@ -20,12 +21,40 @@ interface KpiPanelGlassProps {
 export default function KpiPanelGlass({ kpis }: KpiPanelGlassProps) {
   
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+
+   useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    let position = 0;
+    const step = 1; // píxeles por frame
+    const interval = setInterval(() => {
+      position += step;
+      el.scrollTo({
+        top: position,
+        behavior: "smooth", // hace que sea progresivo
+      });
+
+      // Reinicia al llegar al final
+      if (position >= el.scrollHeight - el.clientHeight) {
+        position = 0;
+      }
+    }, 160); // cada 50ms
+
+    return () => clearInterval(interval);
+  }, []);
+
+
+
   return (
     
 
      
         <motion.div
          key="KpiPanelGlass"
+         ref={scrollRef}
           initial={{ opacity: 0, y: -20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -33,7 +62,7 @@ export default function KpiPanelGlass({ kpis }: KpiPanelGlassProps) {
           className="fixed top-0 right-0 bottom-0 w-96
             flex flex-col gap-4
             backdrop-blur-xl bg-white/20 border-l border-white/30
-            shadow-2xl p-4 z-50"
+            shadow-2xl p-4 z-50 overflow-y-scroll scroll-smooth"
         >
           {kpis.map((kpi, idx) => (
             <KpiCard
