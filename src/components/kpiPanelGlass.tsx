@@ -62,7 +62,7 @@ export default function KpiPanelGlass({ kpis }: KpiPanelGlassProps) {
           className="fixed top-0 right-0 bottom-0 w-96
             flex flex-col gap-4
             backdrop-blur-xl bg-white/20 border-l border-white/30
-            shadow-2xl p-4 z-50 overflow-y-scroll scroll-smooth"
+            shadow-2xl p-4 z-50 overflow-y-scroll scroll-smooth scrollbar-none"
         >
           {kpis.map((kpi, idx) => (
             <KpiCard
